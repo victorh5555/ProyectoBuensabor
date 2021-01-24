@@ -15,15 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-//Routes::get('/home', [App\Http\Controllers\HomeControllers::class, 'index'])->name('home');
+Route::get('/homepage', [App\Http\Controllers\HomeController::class, 'homepage'])->name('homepage');
 
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-
+Route::get('/post', [App\Http\Controllers\HomeController::class, 'post'])->name('post');
 
 Route::get('user/exportar', [App\Http\Controllers\UserController::class, 'exportar'])->name('user.exportar');
 
@@ -39,23 +33,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', function () {
-    return view('template/sb/index');
-});
+Auth::routes();
 
-Route::get('/home', function () {
-    return view('home/bienvenido');
-});
-
-Route::get('/login', function () {
-    return view('login/iniciosesion');
-});
-
-Route::get('/login', function () {
-    return view('login/index');
-});
-
-Route::get('/template', function () {
-    return view('template/main');
-});
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
